@@ -1,0 +1,112 @@
+#因为集成了apollo配置管理，yml所有值都可以删除，直接上传至apollo管理
+#保留此文件的目的是为了开发时更好的了解项目相关参数及调试
+
+#相关操作步骤：
+#1、首先，将yml转换成properties形式，网址：https://www.toyaml.com/index.html
+#2、然后，将转换后的properties参数直接复制到相应项目中即可，可以直接使用apollo中的“文本”功能。
+#3、然后，点击发布。
+#4、最后，运行项目时指定相应的启动参数，例如：java -jar -Xms256m -Xmx256m example_server.jar -Denv=DEV -Dapollo.meta=http://127.0.0.1:8080
+
+#以下是apollo client相关参数
+#AppId,最好在apollo中配置成项目名，这样便于维护
+#1.-Dapp.id=example-server
+#这里可以配置自己的环境，如DEV/SIT/FAT/UAT/PRO等，也可以配置为LOCAL，如果配置为LOCAL则从本地文件读取，配置文件路径为项目的classpath:/META-INF/config/相应namespace.properties
+#2.-Denv=DEV
+#env 环境对应的meta-service地址
+#3.-Dapollo.meta=http://127.0.0.1:8080
+# 配置的本地缓存地址
+#4.-Dapollo.cacheDir=/work/temp/cache/example_server/appollo
+# 当有多个集群是配置集群名称，默认为default，当配置集群之后，如果Apollo在指定集群获取不到配置数据，则还会去默认集群获取
+#5.-Dapollo.cluster=default
+
+app:
+    id: example-server
+#apollo配置，可以在运行时直接指定
+apollo:
+    meta: http://127.0.0.1:7777
+    bootstrap:
+        enabled: true
+        eagerLoad:
+            enabled: true
+    namespaces: application-global,application
+server:
+#配置启动端口
+    port: 9999
+##############spring 配置开始##############
+spring:
+    application:
+#应用名称
+        name: example-server
+    datasource:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.cj.jdbc.Driver
+        url: jdbc:mysql://127.0.0.1:3306/example?useAffectedRows=true
+        username: root
+        password: 1234qwer
+# Hikari 连接池配置
+        hikari:
+# 最小空闲连接数量
+            minimum-idle: 5
+# 连接池最大连接数，默认是10
+            maximum-pool-size: 10
+# 此属性控制从池返回的连接的默认自动提交行为,默认值：true
+            auto-commit: true
+# 连接池名称
+            pool-name: ${spring.application.name}-HikariCP
+# 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+            max-lifetime: 1800000
+# 数据库连接超时时间,默认30秒，即30000
+            connection-timeout: 30000
+            connection-test-query: SELECT 1
+# 空闲连接存活最大时间，默认600000（10分钟）
+            idle-timeout: 600000
+    cloud:
+        consul:
+#配置consul服务器的host
+            host: 127.0.0.1
+#配置端口
+            port: 8500
+            discovery:
+#是否启用服务发现
+                enabled: true
+                health-check-path: /actuator/health
+#配置健康检查时间间隔
+                health-check-interval: 15s
+#配置实例id
+                instance-id: ${spring.application.name}:${vcap.application.instance_id:${spring.application.instance_id:${random.value}}}
+#配置服务注册
+                register: true
+#服务停止时取消注册
+                deregister: true
+#表示注册时使用ip而不是hostname
+                prefer-ip-address: true
+#健康检查失败多长时间取消注册
+                health-check-critical-timeout: 30s
+    main:
+        allow-bean-definition-overriding: true
+    jackson:
+        time-zone: GMT+8
+        date-format: yyyy-MM-dd hh:mm:ss
+        serialization:
+            FAIL_ON_EMPTY_BEANS: false
+##############spring 配置结束##############
+jasypt:
+    encryptor:
+        password: www.candledrums.com
+#mybaits-plus配置，修改主键类型，mapper.xml、type 别名等
+mybatis-plus:
+    mapper-locations: classpath:mapper/**/*.xml
+    typeAliasesPackage: com.cds.example.dep.dal.model
+#所有环境公用配置
+#加密encryptor
+#数据库大写下划线转换
+    configuration:
+        map-underscore-to-camel-case: true
+#capital-mode: true
+        cache-enabled: true
+logging:
+    config: classpath:logback-spring.xml
+log:
+    path: /work/logs
+    appender: CONSOLE
+    level: INFO    
