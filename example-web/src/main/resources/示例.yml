@@ -37,29 +37,6 @@ spring:
     application:
 #应用名称
         name: example-server
-    datasource:
-        type: com.zaxxer.hikari.HikariDataSource
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://127.0.0.1:3306/example?useAffectedRows=true
-        username: root
-        password: 1234qwer
-# Hikari 连接池配置
-        hikari:
-# 最小空闲连接数量
-            minimum-idle: 5
-# 连接池最大连接数，默认是10
-            maximum-pool-size: 10
-# 此属性控制从池返回的连接的默认自动提交行为,默认值：true
-            auto-commit: true
-# 连接池名称
-            pool-name: ${spring.application.name}-HikariCP
-# 此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
-            max-lifetime: 1800000
-# 数据库连接超时时间,默认30秒，即30000
-            connection-timeout: 30000
-            connection-test-query: SELECT 1
-# 空闲连接存活最大时间，默认600000（10分钟）
-            idle-timeout: 600000
     cloud:
         consul:
 #配置consul服务器的host
@@ -90,18 +67,11 @@ spring:
         serialization:
             FAIL_ON_EMPTY_BEANS: false
 ##############spring 配置结束##############
+#加密encryptor
 jasypt:
     encryptor:
         password: www.candledrums.com
-#mybaits-plus配置，修改主键类型，mapper.xml、type 别名等
-mybatis-plus:
-    mapper-locations: classpath:mapper/**/*.xml
-    typeAliasesPackage: com.cds.example.dep.dal.model
-#所有环境公用配置
-#加密encryptor
-#数据库大写下划线转换
-    configuration:
-        map-underscore-to-camel-case: true
+
 #capital-mode: true
         cache-enabled: true
 logging:
