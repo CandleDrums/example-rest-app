@@ -10,6 +10,7 @@ package com.cds.app.example.biz.impl;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.cds.api.example.model.TableNameVO;
 import com.cds.api.example.query.TableNameQueryService;
@@ -23,6 +24,7 @@ import com.cds.base.exception.server.ServerException;
  * @author liming
  * @Date Jul 7, 2020 2:11:05 PM
  */
+@Service
 public class ExampleServiceImpl implements ExampleService {
 
     // 远程服务
