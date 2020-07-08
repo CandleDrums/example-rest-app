@@ -1,10 +1,10 @@
 #apollo相关配置，可以在运行时单独指定
 app:
-    id: example-server
+    id: example
 apollo:
     meta: http://127.0.0.1:7777
     bootstrap:
         enabled: true
         eagerLoad:
             enabled: true
-    namespaces: application-global,application
+    namespaces: application-web-global,application
