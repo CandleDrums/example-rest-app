@@ -13,12 +13,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.scheduling.annotation.EnableAsync;
 
 import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
 import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
-
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * @Description 启动
@@ -27,12 +24,10 @@ import lombok.extern.slf4j.Slf4j;
  * @Date Jul 7, 2020 2:24:31 PM
  */
 @EnableEncryptableProperties
-@EnableDiscoveryClient
 @SpringBootApplication
-@EnableAsync
-@EnableFeignClients("com.cds.api")
+@EnableFeignClients(basePackages = {"com.cds"})
+@EnableDiscoveryClient
 @ComponentScan(basePackages = {"com.cds"})
-@Slf4j
 @EnableApolloConfig
 public class Application {
 
@@ -45,11 +40,11 @@ public class Application {
         // 启动
         springApplication.run(args);
         // 启动成功
-        log.info("------------------------------------------------");
-        log.info("  ___   _   _    ___    ___    ___   ___   ___ ");
-        log.info(" / __| | | | |  / __|  / __|  / _ \\ / __| / __|");
-        log.info(" \\__ \\ | |_| | | (__  | (__  |  __/ \\__ \\ \\__ \\");
-        log.info(" |___/  \\__,_|  \\___|  \\___|  \\___| |___/ |___/");
-        log.info("------------------------------------------------");
+        System.out.println("------------------------------------------------");
+        System.out.println("  ___   _   _    ___    ___    ___   ___   ___ ");
+        System.out.println(" / __| | | | |  / __|  / __|  / _ \\ / __| / __|");
+        System.out.println(" \\__ \\ | |_| | | (__  | (__  |  __/ \\__ \\ \\__ \\");
+        System.out.println(" |___/  \\__,_|  \\___|  \\___|  \\___| |___/ |___/");
+        System.out.println("------------------------------------------------");
     }
 }
