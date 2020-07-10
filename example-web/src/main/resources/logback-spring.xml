@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration debug="false" scan="false">
     <springProperty scop="context" name="spring.application.name" source="spring.application.name"
-                    defaultValue="example_server"/>
+                    defaultValue="example"/>
     <springProperty scop="context" name="log.path" source="log.path"
-                    defaultValue="/Users/liming/work/logs"/>
+                    defaultValue="/work/logs"/>
     <springProperty scop="context" name="log.level" source="log.level"
                     defaultValue="INFO"/>
     <springProperty scop="context" name="log.appender" source="log.appender"
