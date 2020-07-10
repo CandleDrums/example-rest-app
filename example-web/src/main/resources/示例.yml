@@ -36,7 +36,7 @@ server:
 spring:
     application:
 #应用名称
-        name: example-server
+        name: example
     cloud:
         consul:
 #配置consul服务器的host
