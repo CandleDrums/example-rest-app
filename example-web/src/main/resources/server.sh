@@ -4,14 +4,15 @@ export BUILD_ID=cds
 #----------------------------------------------↓变量区↓----------------------------------------------#
 #操作类型：start/stop/restart/status
 OPERATION=$1
-#执行文件名，例如：example_server.jar
+#执行文件名，例如：example.jar
 #JAR_NAME=""时，自动搜索当前目录下唯一jar包
-JAR_NAME="example_server.jar"
+JAR_NAME="example.jar"
 #虚拟机参数，例如：-Xms256m -Xmx256m
 VM_OPTIONS="-Xms256m -Xmx256m"
 #springboot 配置文件指定
 #例如：dev/test/pro等，对应application-dev.yml/application-test.yml/application-pro.yml
 #不指定则不是springboot项目或直接使用application.yml
+#因为本项目使用apollo管理配置文件，所以用不到此参数
 PROFILE_ACTIVE=""
 #颜色定义
 RESTORE=$(echo -en '\033[0m')
@@ -132,7 +133,7 @@ function usage() {
 	echo -e "精简命令：sh server.sh ${GREEN}start${RESTORE} ${PURPLE}-p=dev${RESTORE} ${YELLOW}-j=name.jar${RESTORE}"
 	echo -e "                     [${GREEN}操作类型${RESTORE}]                     [${BLUE}虚拟机参数，可选${RESTORE}]"
 	echo -e "                         ↓                                    ↓ "
-	echo -e "完整命令：sh server.sh ${GREEN}start${RESTORE} ${YELLOW}-j=example_server.jar${RESTORE} ${BLUE}-v='-Xms512m -Xmx512m'${RESTORE} ${PURPLE}-p=dev${RESTORE}"
+	echo -e "完整命令：sh server.sh ${GREEN}start${RESTORE} ${YELLOW}-j=${JAR_NAME}${RESTORE} ${BLUE}-v='${VM_OPTIONS}'${RESTORE} ${PURPLE}-p=dev${RESTORE}"
 	echo -e "                                     ↑                                       ↑                   "
 	echo -e "                         [${YELLOW}文件名，无则搜索当前目录${RESTORE}]              [${PURPLE}springboot配置选择，可选]${RESTORE}"
 	exit 1
