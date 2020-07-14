@@ -20,7 +20,7 @@ import com.cds.base.exception.server.ServerException;
 
 /**
  * @Description 示例Service实现
- * @Notes 未填写备注
+ * @Notes 可以直接删除
  * @author liming
  * @Date Jul 7, 2020 2:11:05 PM
  */

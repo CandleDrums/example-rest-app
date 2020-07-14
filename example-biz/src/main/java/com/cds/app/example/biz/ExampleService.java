@@ -13,7 +13,7 @@ import com.cds.api.example.model.TableNameVO;
 
 /**
  * @Description 示例Service
- * @Notes 未填写备注
+ * @Notes 可以直接删除
  * @author liming
  * @Date Jul 7, 2020 2:10:43 PM
  */

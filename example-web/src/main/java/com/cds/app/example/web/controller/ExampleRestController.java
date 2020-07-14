@@ -22,8 +22,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 /**
- * @Description 示例
- * @Notes 未填写备注
+ * @Description 示例Controller
+ * @Notes 可以直接删除
  * @author liming
  * @Date Jul 8, 2020 5:46:46 PM
  */
