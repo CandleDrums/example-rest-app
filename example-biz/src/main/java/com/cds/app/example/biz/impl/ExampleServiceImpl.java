@@ -12,8 +12,8 @@ import javax.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.cds.api.example.model.TableNameVO;
-import com.cds.api.example.query.TableNameQueryService;
+import com.cds.api.example.model.ModelNameVO;
+import com.cds.api.example.query.ModelNameQueryService;
 import com.cds.app.example.biz.ExampleService;
 import com.cds.base.common.result.ResponseResult;
 import com.cds.base.exception.server.ServerException;
@@ -29,11 +29,11 @@ public class ExampleServiceImpl implements ExampleService {
 
     // 远程服务
     @Autowired
-    private TableNameQueryService tableNameQueryService;
+    private ModelNameQueryService modelNameQueryService;
 
     @Override
-    public TableNameVO detail(@NotNull String num) {
-        ResponseResult<TableNameVO> detailResult = tableNameQueryService.detail(num);
+    public ModelNameVO detail(@NotNull String num) {
+        ResponseResult<ModelNameVO> detailResult = modelNameQueryService.detail(num);
         if (ResponseResult.isSuccess(detailResult)) {
             return detailResult.getData();
         }

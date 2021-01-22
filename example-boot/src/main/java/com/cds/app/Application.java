@@ -5,7 +5,7 @@
  * @Date Jul 7, 2020 2:24:31 PM
  * @Copyright (c) 2020 CandleDrumS.com All Right Reserved.
  */
-package com.cds.app.example.web;
+package com.cds.app;
 
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;

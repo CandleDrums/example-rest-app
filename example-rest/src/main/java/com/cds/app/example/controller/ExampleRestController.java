@@ -5,7 +5,7 @@
  * @Date Jul 8, 2020 5:46:46 PM
  * @Copyright (c) 2020 CandleDrumS.com All Right Reserved.
  */
-package com.cds.app.example.web.controller;
+package com.cds.app.example.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cds.api.example.model.TableNameVO;
+import com.cds.api.example.model.ModelNameVO;
 import com.cds.app.example.biz.ExampleService;
 import com.cds.base.common.constants.ApiConstants;
 import com.cds.base.common.result.ResponseResult;
@@ -37,8 +37,8 @@ public class ExampleRestController {
 
     @ApiOperation(value = "详情")
     @GetMapping("/detail/{num}")
-    public ResponseResult<TableNameVO> detail(@PathVariable(value = "num", required = true) String num) {
-        TableNameVO detail = exampleService.detail(num);
+    public ResponseResult<ModelNameVO> detail(@PathVariable(value = "num", required = true) String num) {
+        ModelNameVO detail = exampleService.detail(num);
         return ResponseResult.returnSuccess(detail);
     }
 }

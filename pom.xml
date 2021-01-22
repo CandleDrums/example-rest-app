@@ -12,8 +12,9 @@
 	<packaging>pom</packaging>
 	<name>example</name>
 	<modules>
-		<module>example-web</module>
 		<module>example-biz</module>
+		<module>example-boot</module>
+		<module>example-rest</module>
 	</modules>
 	<properties>
 		<package.name>example</package.name>
@@ -28,6 +29,11 @@
 			<dependency>
 				<groupId>com.candledrums.app</groupId>
 				<artifactId>example-biz</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.candledrums.app</groupId>
+				<artifactId>example-rest</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 		</dependencies>

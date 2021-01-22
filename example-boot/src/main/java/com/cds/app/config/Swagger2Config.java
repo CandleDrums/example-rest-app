@@ -5,7 +5,7 @@
  * @Date Jul 8, 2020 6:32:49 PM
  * @Copyright (c) 2020 CandleDrumS.com All Right Reserved.
  */
-package com.cds.app.example.web.config;
+package com.cds.app.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

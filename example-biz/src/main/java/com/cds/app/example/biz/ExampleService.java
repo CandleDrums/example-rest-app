@@ -9,7 +9,7 @@ package com.cds.app.example.biz;
 
 import javax.validation.constraints.NotNull;
 
-import com.cds.api.example.model.TableNameVO;
+import com.cds.api.example.model.ModelNameVO;
 
 /**
  * @Description 示例Service
@@ -19,8 +19,8 @@ import com.cds.api.example.model.TableNameVO;
  */
 public interface ExampleService {
     /**
-     * @description 示例
-     * @return TableNameVO
+     * @description 示例-查询详情
+     * @return ModelNameVO
      */
-    TableNameVO detail(@NotNull String num);
+    ModelNameVO detail(@NotNull String num);
 }
