@@ -4,10 +4,10 @@ export BUILD_ID=cds
 #----------------------------------------------↓变量区↓----------------------------------------------#
 #操作类型：start/stop/restart/status
 OPERATION=$1
-#执行文件名，例如：example.jar
+#默认执行文件名，例如：example_server.jar
 #JAR_NAME=""时，自动搜索当前目录下唯一jar包
-JAR_NAME="example.jar"
-#虚拟机参数，例如：-Xms256m -Xmx256m
+JAR_NAME="example_server.jar"
+#默认虚拟机参数，未指定时使用，例如：-Xms256m -Xmx256m
 VM_OPTIONS="-Xms256m -Xmx256m"
 #springboot 配置文件指定
 #例如：dev/test/pro等，对应application-dev.yml/application-test.yml/application-pro.yml
