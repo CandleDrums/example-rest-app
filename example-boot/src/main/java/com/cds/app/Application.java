@@ -10,11 +10,11 @@ package com.cds.app;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 
-import com.ctrip.framework.apollo.spring.annotation.EnableApolloConfig;
 import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 
 /**
@@ -28,7 +28,9 @@ import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties
 @EnableFeignClients(basePackages = {"com.cds"})
 @EnableDiscoveryClient
 @ComponentScan(basePackages = {"com.cds"})
-@EnableApolloConfig
+// Apollo配置
+// @EnableApolloConfig
+@EnableCircuitBreaker
 public class Application {
 
     public static void main(String[] args) {
@@ -47,4 +49,5 @@ public class Application {
         System.out.println(" |___/  \\__,_|  \\___|  \\___|  \\___| |___/ |___/");
         System.out.println("------------------------------------------------");
     }
+
 }
