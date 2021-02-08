@@ -10,8 +10,8 @@ package com.cds.app;
 import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 
@@ -25,12 +25,12 @@ import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties
  */
 @EnableEncryptableProperties
 @SpringBootApplication
-@EnableFeignClients(basePackages = {"com.cds"})
+@EnableFeignClients(basePackages = {"com.cds.api"})
 @EnableDiscoveryClient
 @ComponentScan(basePackages = {"com.cds"})
 // Apollo配置
 // @EnableApolloConfig
-@EnableCircuitBreaker
+@EnableHystrix
 public class Application {
 
     public static void main(String[] args) {

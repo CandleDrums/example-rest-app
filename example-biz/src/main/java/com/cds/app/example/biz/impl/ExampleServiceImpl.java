@@ -32,8 +32,8 @@ public class ExampleServiceImpl implements ExampleService {
     private ModelNameQueryService modelNameQueryService;
 
     @Override
-    public ModelNameVO detail(@NotNull String num) {
-        ResponseResult<ModelNameVO> detailResult = modelNameQueryService.detail(num);
+    public ModelNameVO detail(@NotNull String pk) {
+        ResponseResult<ModelNameVO> detailResult = modelNameQueryService.detail(pk);
         if (ResponseResult.isSuccess(detailResult)) {
             return detailResult.getData();
         }
