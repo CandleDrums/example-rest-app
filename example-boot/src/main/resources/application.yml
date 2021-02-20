@@ -34,24 +34,7 @@
 
 server:
   port: 80
-feign:
-  hystrix:
-    enabled: true
-#Hystrix的默认超时设置
-hystrix:
-  command:
-    default:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 8000
-        timeout:
-          enabled: true
 
-# Ribbon的超时设置
-ribbon:
-  ReadTimeout: 8000  #响应超时(毫秒)
-  ConnectTimeout: 5000 #连接超时(毫秒)
 jasypt:
   encryptor:
     password: www.candledrums.com
@@ -65,6 +48,12 @@ logging:
 spring:
   application:
     name: example
+  security:
+    user:
+      name: client
+      password: 1234qwer
+      roles:
+      - CLIENT
   cloud:
     consul:
       discovery:
@@ -78,14 +67,30 @@ spring:
         register: true
       host: localhost
       port: 8500
-      ribbon:
-        enabled: true
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     serialization:
-      FAIL_ON_EMPTY_BEANS: false
       write-dates-as-timestamps: false
     time-zone: GMT+8
   main:
     allow-bean-definition-overriding: true
-
+  sleuth:
+    enabled: true
+    sampler:
+      probability: 1  # 设置抽样采集率为100%，默认为0.1，即10%   
+    async:
+      enabled: true
+    feign:
+      enabled: true
+    rpc:
+      enabled: true
+    circuitbreaker:
+      enabled: true
+    function:
+      enabled: true
+    http:
+      enabled: true
+  zipkin:
+    base-url: http://182.92.152.103:9411
+    sender:
+        type: web
